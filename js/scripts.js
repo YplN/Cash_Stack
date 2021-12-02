@@ -355,8 +355,6 @@ window.onload = function() {
     resizeInput.call(amountInput); // immediately call the function
 
 
-    console.log(CashToWeight(1000000000, "euro", 100));
-
     $.getJSON('https://forbes400.herokuapp.com/api/forbes400?limit=10', function(data) {
         // JSON result in `data` variable
 
@@ -399,7 +397,7 @@ window.onload = function() {
 
 
 
-        console.log(data);
+        // console.log(data);
         // document.writeln(p.person.name) console.log(p.person.name);
 
     });
