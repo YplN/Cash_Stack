@@ -147,7 +147,7 @@ function CashToSideBySideLength(cash, currency, value) {
  * @param {*} value 
  * @returns s
  */
-function CashToTime(cash, currency, value) {
+function CashToTime(cash, value) {
     const numberNotes = Math.ceil(cash / value);
     return numberNotes;
 }
@@ -158,6 +158,16 @@ function CashToYears(cash, cashDaily = 100) {
     const years = days / 365.25;
     return (years);
 }
+
+
+function CashToHours(cash, value) {
+    const hours = CashToTime(cash, value);
+    // const hours = seconds / 3600;
+    return (hours);
+}
+
+
+
 
 function CashToLife(cash, cashDaily, lifeDuration = 80) {
     const years = CashToYears(cash, cashDaily);
@@ -200,9 +210,9 @@ function loadData() {
 
     document.getElementById("volume").innerHTML = formatBestUnitLength(CashToCubeSize(amount, currency, value));
     document.getElementById("height").innerHTML = formatBestUnitLength(CashToHeight(amount, currency, value));
-    document.getElementById("weight").innerHTML = round2decimals(CashToWeight(amount, currency, value) / 1000) + " kg";
+    document.getElementById("weight").innerHTML = formatBestUnitWeight(CashToWeight(amount, currency, value));
     document.getElementById("length").innerHTML = formatBestUnitLength(CashToSideBySideLength(amount, currency, value));
-    document.getElementById("years").innerHTML = round2decimals(CashToYears(amount, value)) + " years";
+    document.getElementById("years").innerHTML = formatBestUnitTime(CashToHours(amount, value));
 
 }
 
@@ -218,7 +228,7 @@ function UpdateSelect() {
 
     if (prevCurrency) {
         const currency = prevCurrency.value;
-        const selectCurrency = document.getElementById("value");
+        //const selectCurrency = document.getElementById("value");
 
         const selectCurrencyDiv = document.getElementById("select_values");
 
@@ -235,7 +245,7 @@ function UpdateSelect() {
 
         for (const note in bankNotesCurrency) {
             const valueNote = bankNotesCurrency[note]["value"];
-            const selectNote = document.createElement('option');
+            // const selectNote = document.createElement('option');
 
             const noteOption = document.createElement('span');
             noteOption.id = `${valueNote}_${currency}`;
@@ -274,9 +284,9 @@ function UpdateSymbolAmount() {
 
 let prevCurrency = null;
 
-function UpdateCurrency(r) {
-    if (r !== prevCurrency) {
-        prevCurrency = r;
+function UpdateCurrency() {
+    if (this !== prevCurrency) {
+        prevCurrency = this;
 
         UpdateSelect();
         UpdateSymbolAmount();
@@ -343,12 +353,70 @@ function formatBestUnitLength(length) {
     return Math.floor(100 * length / bestUnitRatio) / 100 + " " + bestUnit;
 }
 
+
+
+function formatBestUnitWeight(weight) {
+    let bestUnit = valueComparison.weight.baseUnit;
+    let bestUnitRatio = 1;
+    const units = valueComparison.weight.unit;
+    for (unit in units) {
+        if (units[unit] > weight)
+            break;
+        bestUnit = unit;
+        bestUnitRatio = units[unit];
+    }
+
+    return Math.floor(100 * weight / bestUnitRatio) / 100 + " " + bestUnit;
+}
+
+
+
+function formatBestUnitTime(time) {
+    let bestUnit = valueComparison.time.baseUnit;
+    let bestUnitRatio = 1;
+    const units = valueComparison.time.unit;
+    for (unit in units) {
+        if (units[unit] > time)
+            break;
+        bestUnit = unit;
+        bestUnitRatio = units[unit];
+    }
+
+    const value = Math.floor(100 * time / bestUnitRatio) / 100;
+    return value + " " + bestUnit + (value > 1 ? "s" : "");
+}
+
 window.onload = function() {
 
+    const radioCurrency = document.getElementById("currencyRadio");
+    for (const cur in bankNotesData) {
+        const id = "currency_" + cur;
+        const name = "currencies";
+        const classListInput = "element radio"
+        const value = cur;
+        const title = cur;
+
+        const input = document.createElement("input");
+        input.id = id;
+        input.name = name;
+        input.classList = classListInput;
+        input.type = "radio";
+        input.value = value;
+        input.title = title;
+        // input.addEventListener("change", UpdateCurrency);
+        input.onchange = UpdateCurrency;
+
+        const label = document.createElement("label");
+        label.htmlFor = id;
+        label.classList = "choice";
+
+        label.innerHTML = bankNotesData[cur].symbol;
+        radioCurrency.appendChild(input);
+        radioCurrency.appendChild(label);
+    }
 
     const amountInput = document.getElementById("amount");
 
-    // amountInput.addEventListener('keydown', enforceFormat);
     amountInput.addEventListener('keydown', autoFormatToNumber);
     amountInput.addEventListener('keyup', autoFormatToNumber);
     amountInput.addEventListener('input', resizeInput); // bind the "resizeInput" callback on "input" event
@@ -393,14 +461,10 @@ window.onload = function() {
             button.appendChild(span);
         }
 
-        //li.innerHTML += `${p.person.name} ($${Math.floor(p.estWorthPrev/1000)} B)` //(${}) ;
-
-
-
-        // console.log(data);
-        // document.writeln(p.person.name) console.log(p.person.name);
-
     });
+
+
+
 
     // const listItem = document.createElement("ul");
     // for (const item of valueComparison.length.comparison) {

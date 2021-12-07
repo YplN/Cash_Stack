@@ -24,6 +24,10 @@
     <!--Get your own code at fontawesome.com-->
 
 
+    <link rel="apple-touch-icon" sizes="180x180" href="data/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="data/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="data/favicons/favicon-16x16.png">
+    <link rel="manifest" href="data/favicons/site.webmanifest">
 
     <title>Cash Stack</title>
 </head>
@@ -31,10 +35,6 @@
 <body>
 
     <div id="listItems"></div>
-
-    <!-- https://www.pinterest.at/pin/829436456370508658/ -->
-
-
 
     <div id="top10"></div>
 
@@ -46,40 +46,27 @@
 
         <div class="ellipse-2">
             <div class="ellipse">
-                <!-- <div id="face"><i class="fas fa-grin-beam"></i></div> -->
-
                 <form>
-
                     <label class="description" for="element_1">Amount </label>
                     <div>
-                        <span class="currency_input"><i id = "amount_sign" class='fas fa-dollar-sign'></i><input id="amount" name="amount" type="text" maxlength="16" value="10,000" title="Enter the amount of cash" required/></span>
+                        <span class="currency_input">
+                            <i id = "amount_sign" class='fas fa-dollar-sign'></i>
+                            <input id="amount" name="amount" type="text" maxlength="16" value="10,000" title="Enter the amount of cash" required/>
+                        </span>
                     </div>
 
+                    <label class="description" for="currency">
+                        Currency
+                    </label>
+                    <span id="currencyRadio"></span>
 
-                    <label class="description" for="currency">Currency </label>
-                    <span id="currencyRadio">
-                        <input id="currency_euro" name="currencies" class="element radio" type="radio" value="euro" onchange="UpdateCurrency(this)" title="Euro"/>
-                        <label class="choice" for="currency_euro" > 
-                            <i class='fas fa-euro-sign'></i></label>
-            
-                        <input id="currency_dollar" name="currencies" class="element radio" type="radio" value="dollar" onchange="UpdateCurrency(this)"  title="Dollar"/>
-                        <label class="choice" for="currency_dollar"><i class='fas fa-dollar-sign'></i></label>
-            
-                        <input id="currency_pound" name="currencies" class="element radio" type="radio" value="pound" onchange="UpdateCurrency(this)"  title="Pound"/>
-                        <label class="choice" for="currency_pound"><i class='fas fa-pound-sign'></i></label>
-            
-                    </span>
-
-
-                    <label class="description" for="value">Note value </label>
-
-                    </select>
+                    <label class="description" for="value">
+                        Note value
+                    </label>
 
                     <div id="select_values"></div>
 
                     <input id="saveForm" class="button_text" type="button" name="submit" value="Submit" onclick="loadData()" />
-
-
                 </form>
             </div>
         </div>
@@ -134,21 +121,14 @@
             <div class="tooltip">
                 Time
                 <span class="tooltip_content"> 
-                    Corresponds to the time needed to get this amount of money when earning the selected note daily
-                    <img src="data/img/height.gif" alt="bank notes stacking" />
+                    Corresponds to the time needed to get this amount of money when earning the selected note hourly
+                    <img src="data/img/time.gif" alt="bank notes stacking" />
                 </span><br>
                 <span class="data_value" id="years"> </span>
             </div>
         </li>
     </ul>
 
-
-
-
-
 </body>
-
-
-
 
 </html>

@@ -279,5 +279,35 @@ var valueComparison = {
                 attribution: "Tris1606, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons"
             }
         ]
+    },
+    weight: {
+        baseUnit: "g",
+        unit: {
+            g: 1,
+            kg: 1000,
+            T: 1000000
+        },
+        comparison: [{
+            value: 1,
+            name: "TODO",
+            img: "TODO",
+            attribution: "TODO"
+        }]
+    },
+    time: {
+        baseUnit: "hour",
+        unit: {
+            "hour": 1,
+            "day": 24,
+            "month": 720,
+            "year": 262800,
+        },
+        comparison: [{
+            value: 1,
+            name: "TODO",
+            img: "TODO",
+            attribution: "TODO"
+        }]
     }
+
 }

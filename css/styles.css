@@ -2,6 +2,7 @@
     --primary: rgb(231, 232, 201);
     --secondary: rgb(117, 147, 111);
     --tertiary: rgb(13, 141, 78);
+    --currencyFont: 'Abril Fatface', cursive;
 }
 
 body {
@@ -74,9 +75,10 @@ form {
     border: 2px solid var(--tertiary);
     border-radius: 50%;
     color: var(--tertiary);
+    font-family: var(--currencyFont);
     background: var(--primary);
     margin: 15px 10px;
-    font-size: 25px;
+    font-size: 27px;
     transition: all 0.2s ease-in-out;
     height: 50px;
     width: 50px;
@@ -249,7 +251,7 @@ form {
     font-weight: bolder;
     color: var(--secondary);
     opacity: 0.4;
-    font-family: 'Abril Fatface', cursive;
+    font-family: var(--currencyFont);
     position: absolute;
     height: 100%;
     left: 50%;
