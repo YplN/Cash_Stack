@@ -22,6 +22,7 @@ form {
     height: 90%;
     margin: auto;
     align-items: center;
+    justify-content: space-evenly;
     z-index: 2;
 }
 
@@ -53,7 +54,7 @@ form {
 }
 
 #amount_sign {
-    color: var(--tertiary);
+    color: var(--primary);
     font-size: 20px;
 }
 
@@ -338,4 +339,28 @@ form {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+}
+
+#saveForm {
+    padding: 8px 10px;
+    border-radius: 5px;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    background-color: var(--secondary);
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-family: 'Roboto Condensed', sans-serif;
+    transition-duration: 0.4s;
+}
+
+#saveForm:hover {
+    color: var(--tertiary);
+    background-color: var(--primary);
+}
+
+.entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }

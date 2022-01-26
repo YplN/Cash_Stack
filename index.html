@@ -47,26 +47,33 @@
         <div class="ellipse-2">
             <div class="ellipse">
                 <form>
-                    <label class="description" for="element_1">Amount </label>
-                    <div>
-                        <span class="currency_input">
+                    <div class="entry">
+                        <label class="description" for="element_1">Amount </label>
+                        <div>
+                            <span class="currency_input">
                             <i id = "amount_sign" class='fas fa-dollar-sign'></i>
                             <input id="amount" name="amount" type="text" maxlength="16" value="10,000" title="Enter the amount of cash" required/>
                         </span>
+                        </div>
                     </div>
 
-                    <label class="description" for="currency">
+                    <div class="entry">
+                        <label class="description" for="currency">
                         Currency
                     </label>
-                    <span id="currencyRadio"></span>
+                        <span id="currencyRadio"></span>
 
-                    <label class="description" for="value">
+                    </div>
+
+                    <div class="entry">
+                        <label class="description" for="value">
                         Note value
                     </label>
 
-                    <div id="select_values"></div>
+                        <div id="select_values"></div>
+                    </div>
 
-                    <input id="saveForm" class="button_text" type="button" name="submit" value="Submit" onclick="loadData()" />
+                    <input id="saveForm" class="button_text" type="button" name="submit" value="Convert" onclick="loadData()" />
                 </form>
             </div>
         </div>
@@ -77,7 +84,7 @@
     </div>
 
     <ul id="data">
-        <li>
+        <!-- <li>
             <div class="tooltip">
                 Volume
                 <span class="tooltip_content">
@@ -86,12 +93,12 @@
                 </span><br>
                 <span class="data_value" id="volume"></span>
             </div>
-        </li>
+        </li> -->
         <li>
             <div class="tooltip">
                 Weigth
                 <span class="tooltip_content">
-                    Corresponds to the weight the cash
+                    Corresponds to the weight the cash.
                     <img src="data/img/weight.gif" alt="bank notes stacking" />
                 </span><br>
                 <span class="data_value" id="weight"></span>
@@ -101,7 +108,7 @@
             <div class="tooltip">
                 Height
                 <span class="tooltip_content">
-                    Corresponds to the height of the stack by putting all the bank notes on top of each other
+                    Corresponds to the height of the stack by putting all the bank notes on top of each other.
                     <img src="data/img/height.gif" alt="bank notes stacking" />
                 </span><br>
                 <span class="data_value" id="height"></span>
@@ -111,7 +118,7 @@
             <div class="tooltip">
                 Length
                 <span class="tooltip_content"> 
-                    Corresponds to the length by putting all the bank notes side by side 
+                    Corresponds to the length by putting all the bank notes side by side.
                     <img src="data/img/length.gif" alt="bank notes stacking" />
                 </span><br>
                 <span class="data_value" id="length"></span>
@@ -121,7 +128,7 @@
             <div class="tooltip">
                 Time
                 <span class="tooltip_content"> 
-                    Corresponds to the time needed to get this amount of money when earning the selected note hourly
+                    Corresponds to the time needed to get this amount of money when earning the selected note every hour, 24h/7.
                     <img src="data/img/time.gif" alt="bank notes stacking" />
                 </span><br>
                 <span class="data_value" id="years"> </span>

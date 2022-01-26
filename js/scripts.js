@@ -2,12 +2,14 @@
 
 
 const formatToNumber = (text) => {
-    const value = text.replace(/\D/g, '');
-    return parseInt(value).toLocaleString("en-US");
+    return parseInt(text).toLocaleString("en-US");
 }
 
+
 const autoFormatToNumber = (event) => {
-    event.target.value = formatToNumber(event.target.value);
+
+    // const value = text.replace(/\D/g, ''); 
+    event.target.value = formatToNumber(event.target.value.replace(/\D/g, ''));
 };
 
 
@@ -200,19 +202,21 @@ function loadData() {
 
 
     // const valuesSelect = document.getElementById("value");
-    const valuesSelect = prevNote.firstChild.innerHTML;
-    const value = valuesSelect.replace(/^\D+/g, '');
-    // console.log(value);
+    if (prevNote !== null) {
+        const valuesSelect = prevNote.firstChild.innerHTML;
+        const value = valuesSelect.replace(/^\D+/g, '');
+        // console.log(value);
 
-    // const value = valuesSelect.options[valuesSelect.selectedIndex].text.replace(/^\D+/g, '');
+        // const value = valuesSelect.options[valuesSelect.selectedIndex].text.replace(/^\D+/g, '');
 
-    // console.log(amount, currency, value)
+        // console.log(amount, currency, value)
 
-    document.getElementById("volume").innerHTML = formatBestUnitLength(CashToCubeSize(amount, currency, value));
-    document.getElementById("height").innerHTML = formatBestUnitLength(CashToHeight(amount, currency, value));
-    document.getElementById("weight").innerHTML = formatBestUnitWeight(CashToWeight(amount, currency, value));
-    document.getElementById("length").innerHTML = formatBestUnitLength(CashToSideBySideLength(amount, currency, value));
-    document.getElementById("years").innerHTML = formatBestUnitTime(CashToHours(amount, value));
+        // document.getElementById("volume").innerHTML = formatBestUnitLength(CashToCubeSize(amount, currency, value));
+        document.getElementById("height").innerHTML = formatBestUnitLength(CashToHeight(amount, currency, value));
+        document.getElementById("weight").innerHTML = formatBestUnitWeight(CashToWeight(amount, currency, value));
+        document.getElementById("length").innerHTML = formatBestUnitLength(CashToSideBySideLength(amount, currency, value));
+        document.getElementById("years").innerHTML = formatBestUnitTime(CashToHours(amount, value));
+    }
 
 }
 
@@ -226,7 +230,7 @@ function resizeInput() {
 
 function UpdateSelect() {
 
-    if (prevCurrency) {
+    if (prevCurrency !== null) {
         const currency = prevCurrency.value;
         //const selectCurrency = document.getElementById("value");
 
@@ -282,7 +286,7 @@ function UpdateSymbolAmount() {
 }
 
 
-let prevCurrency = null;
+let prevCurrency = document.getElementById("currency_dollar");
 
 function UpdateCurrency() {
     if (this !== prevCurrency) {
@@ -350,7 +354,14 @@ function formatBestUnitLength(length) {
         bestUnitRatio = units[unit];
     }
 
-    return Math.floor(100 * length / bestUnitRatio) / 100 + " " + bestUnit;
+    const value = Math.floor(100 * length / bestUnitRatio) / 100;
+
+    if (value >= 1000) {
+        return formatToNumber(value) + " " + bestUnit;
+    }
+
+    return value + " " + bestUnit;
+
 }
 
 
@@ -365,8 +376,13 @@ function formatBestUnitWeight(weight) {
         bestUnit = unit;
         bestUnitRatio = units[unit];
     }
+    const value = Math.floor(100 * weight / bestUnitRatio) / 100;
 
-    return Math.floor(100 * weight / bestUnitRatio) / 100 + " " + bestUnit;
+    if (value >= 1000) {
+        return formatToNumber(value) + " " + bestUnit;
+    }
+
+    return value + " " + bestUnit;
 }
 
 
@@ -383,7 +399,41 @@ function formatBestUnitTime(time) {
     }
 
     const value = Math.floor(100 * time / bestUnitRatio) / 100;
-    return value + " " + bestUnit + (value > 1 ? "s" : "");
+
+    if (value >= 1000) {
+        return formatToNumber(value) + " " + bestUnit + (value > 1 ? "s" : "");;
+    }
+
+    return value + " " + bestUnit + (value > 1 ? "s" : "");;
+
+}
+
+function createNewButton(name, worth, top, ul, data, amountInput) {
+    let li = document.createElement('li');
+    ul.appendChild(li);
+
+    let button = document.createElement('div');
+
+    let span = document.createElement('span');
+    button.type = "button";
+    button.className = "topList";
+    span.innerHTML = `${name}`;
+    button.title = `Select ${name} ($${Math.floor(worth/1000)} B)`;
+    button.name = `top_${top}`;
+
+    button.onclick = function() {
+
+        document.getElementById("amount").value = formatToNumber("" + Math.floor(data[this.name.split("_")[1]].estWorthPrev * 1000000));
+        document.getElementById("currency_dollar").checked = true;
+        resizeInput.call(amountInput);
+
+        prevCurrency = document.getElementById("currency_dollar");
+        UpdateSelect();
+        UpdateSymbolAmount();
+        prevNote = null;
+    };
+    li.appendChild(button);
+    button.appendChild(span);
 }
 
 window.onload = function() {
@@ -429,37 +479,42 @@ window.onload = function() {
         ul = document.createElement('ul');
         document.getElementById('top10').appendChild(ul);
 
+        let sum = 0;
 
         let i = 0;
         for (const p of data) {
 
-            let li = document.createElement('li');
-            ul.appendChild(li);
-
-            let button = document.createElement('div');
-
-            let span = document.createElement('span');
-            button.type = "button";
-            button.className = "topList";
-            span.innerHTML = `${p.person.name}`;
-            button.title = `Select ${p.person.name} ($${Math.floor(p.estWorthPrev/1000)} B)`;
-            button.name = `top_${i}`;
+            createNewButton(p.person.name, p.estWorthPrev, i, ul, data, amountInput);
             i++;
 
-            button.onclick = function() {
-                document.getElementById("amount").value = formatToNumber("" + Math.floor(data[this.name.split("_")[1]].estWorthPrev * 1000000));
-                // console.log(Math.floor(data[this.name.split("_")[1]].estWorthPrev * 1000000));
-                document.getElementById("currency_dollar").checked = true;
-                resizeInput.call(amountInput);
+            // let li = document.createElement('li');
+            // ul.appendChild(li);
 
-                prevCurrency = document.getElementById("currency_dollar");
-                UpdateSelect();
-                UpdateSymbolAmount();
-                prevNote = null;
-            };
-            li.appendChild(button);
-            button.appendChild(span);
+            // let button = document.createElement('div');
+
+            // let span = document.createElement('span');
+            // button.type = "button";
+            // button.className = "topList";
+            // span.innerHTML = `${p.person.name}`;
+            // button.title = `Select ${p.person.name} ($${Math.floor(p.estWorthPrev/1000)} B)`;
+            // button.name = `top_${i}`;
+            // i++;
+
+            // button.onclick = function() {
+            //     document.getElementById("amount").value = formatToNumber("" + Math.floor(data[this.name.split("_")[1]].estWorthPrev * 1000000));
+            //     // console.log(Math.floor(data[this.name.split("_")[1]].estWorthPrev * 1000000));
+            //     document.getElementById("currency_dollar").checked = true;
+            //     resizeInput.call(amountInput);
+
+            //     prevCurrency = document.getElementById("currency_dollar");
+            //     UpdateSelect();
+            //     UpdateSymbolAmount();
+            //     prevNote = null;
+            // };
+            // li.appendChild(button);
+            // button.appendChild(span);
         }
+
 
     });
 
