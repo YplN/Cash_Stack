@@ -13,8 +13,10 @@ TODO
 -   UI
 
 #### To add :
-
--   Responsive
+-   Add entries length comparisons https://www.nikon.com/about/sp/universcale/scale.htm
+-   Add weight comparisons
+-   add time comparisons
+-   Show most accurate comparisons
+-   Responsive interface for phones
 -   Readme
--   Real life reference 
--   Safe of data if connection to API failed
+-   Save of data if connection to API failed
