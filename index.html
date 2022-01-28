@@ -34,9 +34,122 @@
 
 <body>
 
+    <div id="container">
+        <div id="entry_container">
+            <div id="warn" class= "tooltip logo_info">
+                <img src="/data/img/warn.png" alt="info">
+                        <div class="tooltip_content">
+                            How to use? TODO
+                        </div>
+            </div>
+            <form>
+                <div class="entry">
+                    <label class="description" for="element_1">Amount </label>
+                    <div>
+                        <span class="currency_input">
+                            <!-- <i id = "amount_sign" class='fas fa-dollar-sign'></i> -->
+                            <input id="amount" name="amount" type="text" maxlength="16" value="10,000" title="Enter the amount of cash" required/>
+                        </span>
+                    </div>
+                    <div id="top10">
+                        <!-- <ul><li><div class="topList" title="Select Elon Musk ($242 B)"><span>E. Musk</span></div></li><li><div class="topList" title="Select Bernard Arnault &amp; family ($185 B)"><span>B. Arnault</span></div></li><li><div class="topList" title="Select Jeff Bezos ($164 B)"><span>J. Bezos</span></div></li><li><div class="topList" title="Select Bill Gates ($130 B)"><span>B. Gates</span></div></li><li><div class="topList" title="Select Warren Buffett ($111 B)"><span>W. Buffett</span></div></li><li><div class="topList" title="Select Larry Page ($111 B)"><span>L. Page</span></div></li><li><div class="topList" title="Select Larry Ellison ($109 B)"><span>L. Ellison</span></div></li><li><div class="topList" title="Select Sergey Brin ($107 B)"><span>S. Brin</span></div></li><li><div class="topList" title="Select Mark Zuckerberg ($104 B)"><span>M. Zuckerberg</span></div></li><li><div class="topList" title="Select Steve Ballmer ($94 B)"><span>S. Ballmer</span></div></li></ul> -->
+                    </div>
+                </div>
+
+                <div class="entry">
+                    <label class="description" for="currency">
+                    Currency
+                </label>
+                    <span id="currencyRadio"></span>
+
+                </div>
+
+                <div class="entry">
+                    <label class="description" for="value">
+                    Bank Note
+                </label>
+
+                    <div id="select_values"></div>
+                </div>
+
+                <input id="saveForm" class="button_text" type="button" name="submit" value="Convert" onclick="loadData()" />
+            </form>
+
+        </div>
+        <div id="data">
+                <div class="tooltip">
+                    <div>
+                        <img src="/data/img/weight.png" alt="weight" class="logo_data">
+                    </div> 
+                    <div class="data_value" id="weight"> 
+                        16,346 T 
+                    </div> 
+                    <div class="logo_info"> 
+                        <img src="/data/img/info.png" alt="info">
+                        <div class="tooltip_content">
+                            Corresponds to the weight the cash.
+                            <img src="data/img/weight.gif" alt="bank notes stacking" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tooltip">
+                    <div>
+                        <img src="/data/img/height.png" alt="height" class="logo_data">
+                    </div> 
+                    <div class="data_value" id="height">
+                        1,812 km 
+                    </div> 
+                    <div class="logo_info"> 
+                        <img src="/data/img/info.png" alt="info">
+                        <div class="tooltip_content">
+                            Corresponds to the height of the stack by putting all the bank notes on top of each other.
+                            <img src="data/img/height.gif" alt="bank notes stacking" />
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="tooltip">
+                    <div>
+                        <img src="/data/img/height.png" alt="length" class="logo_data" id="length_logo">
+                    </div> 
+                    
+                    <div class="data_value" id="length">
+                        2,569,849 km
+                    </div> 
+                    <div class="logo_info"> 
+                        <img src="/data/img/info.png" alt="info" >
+                        <div class="tooltip_content"> 
+                            Corresponds to the length by putting all the bank notes side by side.
+                            <img src="data/img/length.gif" alt="bank notes stacking" />
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="tooltip">
+
+                    <div>
+                        <img src="/data/img/time.png" alt="time" class="logo_data">
+                    </div> 
+                    
+                    <div class="data_value" id="years">
+                        62,702 years 
+                    </div> 
+                    <div class="logo_info"> 
+                        <img src="/data/img/info.png" alt="info" >
+                        <div class="tooltip_content"> 
+                        Corresponds to the time needed to get this amount of money when earning the selected note every hour, 24h/7.
+                        <img src="data/img/time.gif" alt="bank notes stacking" />
+                    </div>
+                    </div> 
+                </div>
+
+        </div> 
+    </div>
+
+<!-- 
     <div id="listItems"></div>
 
-    <div id="top10"></div>
 
 
     <div id="background_container">
@@ -54,6 +167,7 @@
                             <i id = "amount_sign" class='fas fa-dollar-sign'></i>
                             <input id="amount" name="amount" type="text" maxlength="16" value="10,000" title="Enter the amount of cash" required/>
                         </span>
+                        <div id="top10"></div>
                         </div>
                     </div>
 
@@ -84,16 +198,6 @@
     </div>
 
     <ul id="data">
-        <!-- <li>
-            <div class="tooltip">
-                Volume
-                <span class="tooltip_content">
-                    Corresponds to the necessary length of the side of a cube containing the cash
-                    <img src="data/img/height.gif" alt="bank notes stacking" />
-                </span><br>
-                <span class="data_value" id="volume"></span>
-            </div>
-        </li> -->
         <li>
             <div class="tooltip">
                 Weigth
@@ -134,7 +238,7 @@
                 <span class="data_value" id="years"> </span>
             </div>
         </li>
-    </ul>
+    </ul> -->
 
 </body>
 

@@ -408,6 +408,10 @@ function formatBestUnitTime(time) {
 
 }
 
+function formatName(name){
+    return name.split(' ')[0].substr(0,1) + ". "+name.split(' ')[1];
+}
+
 function createNewButton(name, worth, top, ul, data, amountInput) {
     let li = document.createElement('li');
     ul.appendChild(li);
@@ -417,7 +421,7 @@ function createNewButton(name, worth, top, ul, data, amountInput) {
     let span = document.createElement('span');
     button.type = "button";
     button.className = "topList";
-    span.innerHTML = `${name}`;
+    span.innerHTML = `${formatName(name)}`; 
     button.title = `Select ${name} ($${Math.floor(worth/1000)} B)`;
     button.name = `top_${top}`;
 
@@ -484,8 +488,11 @@ window.onload = function() {
         let i = 0;
         for (const p of data) {
 
+            //ICI
             createNewButton(p.person.name, p.estWorthPrev, i, ul, data, amountInput);
             i++;
+
+
 
             // let li = document.createElement('li');
             // ul.appendChild(li);
