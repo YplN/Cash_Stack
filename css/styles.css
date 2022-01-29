@@ -3,51 +3,43 @@
     --secondary: rgb(117, 147, 111);
     --tertiary: rgb(13, 141, 78);
     --currencyFont: 'Abril Fatface', cursive;
-    --entryContainerColor : rgb(33, 56, 74);
-    --accentColor : rgb(71, 199, 99);
+    --entryContainerColor: rgb(33, 56, 74);
+    --accentColor: rgb(71, 199, 99);
 }
 
 body {
     margin: 5px;
-    /* background: var(--primary); */
     font-family: "Segoe UI", Arial, sans-serif;
-    font-weight:bolder;
-    /* border: 15px solid var(--secondary); */
+    font-weight: bolder;
     background-color: #85FFBD;
     background-image: linear-gradient(116deg, #85FFBD 0%, #FFFB7D 100%);
-
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
 }
 
-#container{
-    display:flex;
-
+#container {
+    display: flex;
 }
 
-
-#entry_container{
+#entry_container {
     background-color: var(--entryContainerColor);
-    padding: 80px 40px; 
+    padding: 80px 40px;
     border-radius: 20px;
-    -webkit-box-shadow: 10px 15px 23px 12px rgba(0,0,0,0.25); 
-    box-shadow: 10px 15px 23px 12px rgba(0,0,0,0.25);
-    color:white;
+    -webkit-box-shadow: 10px 15px 23px 12px rgba(0, 0, 0, 0.25);
+    box-shadow: 10px 15px 23px 12px rgba(0, 0, 0, 0.25);
+    color: white;
     min-width: 25%;
-    max-width: calc(min(30vw,500px));
-    position:relative;
-    z-index:2;
-    
-    /* width : 30%;
-    height: 50%; */
+    max-width: calc(min(30vw, 500px));
+    position: relative;
+    z-index: 2;
+    display: flex;
 }
 
-.description{
+.description {
     padding-bottom: 15px;
 }
-
 
 form {
     display: flex;
@@ -60,11 +52,10 @@ form {
     z-index: 2;
 }
 
-
 #top10 {
     /* margin: 0 auto; */
-    padding-top:15px;
-    width:calc(max(300px, 90%));
+    padding-top: 15px;
+    width: calc(max(300px, 90%));
 }
 
 #top10 ul {
@@ -87,10 +78,12 @@ form {
     font-size: 26px;
 }
 
+
+/* 
 #amount_sign {
     color: var(--primary);
     font-size: 20px;
-}
+} */
 
 #currencyRadio input[type="radio"] {
     opacity: 0;
@@ -112,7 +105,6 @@ form {
     color: white;
     /* font-family: var(--currencyFont); */
     background: rgb(224, 198, 83);
-
     border: 3px solid rgb(224, 198, 83);
     margin: 15px 10px;
     font-size: 27px;
@@ -125,6 +117,7 @@ form {
     align-items: center;
 }
 
+
 /* #currencyRadio label:hover {
     color: var(--primary);
     background: var(--secondary);
@@ -134,26 +127,27 @@ form {
     /* border-color: white; */
     /* color: var(--tertiary); */
     /* border-width: 5px; */
-    
     border: 3px solid white;
 }
 
 .topList {
     transition: all 0.3s;
     position: relative;
-    padding: 10px 15px;
+    padding: 8px 15px;
     color: white;
-    background: var(--accentColor); 
+    background: var(--accentColor);
     border-radius: 5px;
-    margin: 5px ;
+    margin: 5px;
     font-size: 15px;
-    text-align:center;
-    /* font-family: 'Roboto Condensed', sans-serif; */
+    text-align: center;
 }
 
+
+/* 
 .topList span {
     transition: all 0.3s;
-}
+} */
+
 
 /* .topList::before {
     content: '';
@@ -181,37 +175,41 @@ form {
     opacity: 0;
 } */
 
-#data {
+.data {
+    /* display: none; */
+    transition: all 0.2s ease-in-out;
+}
+
+#dataSide {
+    opacity: 0;
+    width: 0;
     background: white;
-    padding : 30px;
+    padding: 30px;
     padding-left: 50px;
-    display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 50px;
     z-index: 1;
-    color: var(--entryContainerColor); 
+    color: var(--entryContainerColor);
     justify-content: space-evenly;
-    width:800px;
     border-radius: 20px;
-    transform:translateX(-30px); 
-
+    transform: translateX(-30px);
 }
 
 .data_value {
-    font-size: 50px ;
+    font-size: 50px;
 }
 
-.logo_data{
-    width:70px;
+.logo_data {
+    width: 70px;
 }
 
-.logo_info img{
-    width:40px; 
+.logo_info img {
+    width: 40px;
 }
 
-#length_logo{
-    transform: rotate(90deg); 
+#length_logo {
+    transform: rotate(90deg);
 }
 
 
@@ -240,15 +238,15 @@ form {
 #select_values {
     display: flex;
     flex-wrap: wrap;
-    width:calc(max(300px, 80%));
+    width: calc(max(300px, 80%));
     justify-content: center;
 }
 
 .noteBank {
     height: 20px;
     border: 3px solid var(--accentColor);
-    border-radius : 5px;
-    min-width:40px;
+    border-radius: 5px;
+    min-width: 40px;
     margin: 5px;
     padding: 5px 5px;
     color: white;
@@ -264,14 +262,13 @@ form {
     margin: 0 auto;
     padding: 5px 5px;
     text-align: center;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .noteBank:hover,
 .selected_note {
     border: 3px solid white;
 }
-
 
 #background_container {
     display: flex;
@@ -283,7 +280,8 @@ form {
     justify-content: space-evenly;
 }
 
-.deco_amount {
+
+/* .deco_amount {
     font-size: 150px;
     font-weight: bolder;
     color: var(--secondary);
@@ -332,8 +330,7 @@ form {
     margin: auto 0;
     color: var(--primary);
     font-size: 200px;
-}
-
+} */
 
 .tooltip .tooltip_content {
     visibility: hidden;
@@ -353,22 +350,30 @@ form {
     /* transform: translate(calc(-50% + 4ch), -110%); */
     display: flex;
     flex-direction: column;
-    bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.397);
     /* margin-left: -150px; */
 }
-.tooltip_content{
+
+.tooltip_top {
+    top: 100%;
+}
+
+.tooltip_bot {
+    bottom: 100%;
+}
+
+.tooltip_content {
     font-weight: 100;
 }
 
 .tooltip {
     /*
     display: inline-block;
-    text-align: center; */ 
+    text-align: center; */
     position: relative;
-    display:flex;
+    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -388,7 +393,8 @@ form {
     animation: fadeIn 0.2s ease-in-out;
 }
 
-.comparison_img {
+
+/* .comparison_img {
     width: 200px;
 }
 
@@ -396,19 +402,19 @@ form {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-}
+} */
 
 #saveForm {
-    margin-top:40px;
-    padding: 8px 10px;
+    margin-top: 40px;
+    padding: 8px 25px;
     border-radius: 10px;
-    color: white; 
-    background:var(--entryContainerColor);
+    color: white;
+    background: var(--entryContainerColor);
     font-size: 25px;
     border: 2px solid white;
     /* background-color: var(--secondary); */
     /* text-transform: uppercase; */
-    font-weight: bolder;
+    font-weight: 100;
     transition-duration: 0.2s;
 }
 
@@ -426,8 +432,101 @@ form {
     padding: 30px 0px 0px 0px;
 }
 
-#warn{
-    position:absolute;
-    top:10px;
-    left:10px;
+#warn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+@media screen and (max-height:1000px) {
+    #entry_container {
+        padding: 40px 20px;
+        box-shadow: 10px 15px 23px 12px rgba(0, 0, 0, 0.25);
+        min-width: 25%;
+        max-width: calc(min(30vw, 500px));
+    }
+    .entry {
+        font-size: 23px;
+        padding: 10px 0px 0px 0px;
+    }
+    #saveForm {
+        margin-top: 30px;
+        padding: 8px 20px;
+        font-size: 20px;
+    }
+    #dataSide {
+        padding: 10px;
+        padding-left: 30px;
+        transform: translateX(-30px);
+    }
+    .data_value {
+        font-size: 40px;
+    }
+    .logo_data {
+        width: 60px;
+    }
+    .logo_info img {
+        width: 40px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    #container {
+        flex-direction: column;
+        align-items: center;
+    }
+    #entry_container {
+        padding: 10px 10px;
+        min-width: none;
+        max-width: 80%;
+        height: 90vh;
+        margin-top: 20px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .entry {
+        font-size: 20px;
+        padding: 10px 0px 0px 0px;
+    }
+    #saveForm {
+        margin-top: 10px;
+        padding: 8px 10px;
+        font-size: 15px;
+    }
+    #top10 {
+        /* margin: 0 auto; */
+        padding-top: 15px;
+        width: 70%;
+    }
+    #amount {
+        font-size: 15px;
+    }
+    .topList {
+        padding: 5px 8px;
+        margin: 2px;
+        font-size: 12px;
+    }
+    #dataSide {
+        padding: 22px;
+        transform: none;
+        height: 100vh;
+    }
+    .data_value {
+        font-size: 35px;
+    }
+    .logo_data {
+        width: 50px;
+    }
+    .logo_info img {
+        width: 30px;
+        padding-bottom: 10px;
+    }
+    .tooltip {
+        flex-direction: column;
+    }
+    #warn {
+        position: initial;
+        padding-bottom: 0;
+    }
 }

@@ -36,11 +36,11 @@
 
     <div id="container">
         <div id="entry_container">
-            <div id="warn" class= "tooltip logo_info">
+            <div id="warn" class="tooltip logo_info">
                 <img src="/data/img/warn.png" alt="info">
-                        <div class="tooltip_content">
-                            How to use? TODO
-                        </div>
+                <div class="tooltip_content">
+                    How to use? TODO
+                </div>
             </div>
             <form>
                 <div class="entry">
@@ -76,169 +76,76 @@
             </form>
 
         </div>
-        <div id="data">
-                <div class="tooltip">
-                    <div>
-                        <img src="/data/img/weight.png" alt="weight" class="logo_data">
-                    </div> 
-                    <div class="data_value" id="weight"> 
-                        16,346 T 
-                    </div> 
-                    <div class="logo_info"> 
-                        <img src="/data/img/info.png" alt="info">
-                        <div class="tooltip_content">
-                            Corresponds to the weight the cash.
-                            <img src="data/img/weight.gif" alt="bank notes stacking" />
-                        </div>
+        <div id="dataSide" class="data hidden">
+            <div class="tooltip">
+                <div>
+                    <img src="/data/img/weight.png" alt="weight" class="logo_data">
+                </div>
+                <div class="data_value" id="weight">
+                    16,346 T
+                </div>
+                <div class="logo_info">
+                    <img src="/data/img/info.png" alt="info">
+                    <div class="tooltip_content tooltip_top">
+                        Corresponds to the weight the cash.
+                        <img src="data/img/weight.gif" alt="bank notes stacking" />
                     </div>
                 </div>
+            </div>
 
-                <div class="tooltip">
-                    <div>
-                        <img src="/data/img/height.png" alt="height" class="logo_data">
-                    </div> 
-                    <div class="data_value" id="height">
-                        1,812 km 
-                    </div> 
-                    <div class="logo_info"> 
-                        <img src="/data/img/info.png" alt="info">
-                        <div class="tooltip_content">
-                            Corresponds to the height of the stack by putting all the bank notes on top of each other.
-                            <img src="data/img/height.gif" alt="bank notes stacking" />
-                        </div>
-                    </div> 
+            <div class="tooltip">
+                <div>
+                    <img src="/data/img/height.png" alt="height" class="logo_data">
+                </div>
+                <div class="data_value" id="height">
+                    1,812 km
+                </div>
+                <div class="logo_info">
+                    <img src="/data/img/info.png" alt="info">
+                    <div class="tooltip_content tooltip_top">
+                        Corresponds to the height of the stack by putting all the bank notes on top of each other.
+                        <img src="data/img/height.gif" alt="bank notes stacking" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="tooltip">
+                <div>
+                    <img src="/data/img/height.png" alt="length" class="logo_data" id="length_logo">
                 </div>
 
-                <div class="tooltip">
-                    <div>
-                        <img src="/data/img/height.png" alt="length" class="logo_data" id="length_logo">
-                    </div> 
-                    
-                    <div class="data_value" id="length">
-                        2,569,849 km
-                    </div> 
-                    <div class="logo_info"> 
-                        <img src="/data/img/info.png" alt="info" >
-                        <div class="tooltip_content"> 
-                            Corresponds to the length by putting all the bank notes side by side.
-                            <img src="data/img/length.gif" alt="bank notes stacking" />
-                        </div>
-                    </div> 
+                <div class="data_value" id="length">
+                    2,569,849 km
+                </div>
+                <div class="logo_info">
+                    <img src="/data/img/info.png" alt="info">
+                    <div class="tooltip_content tooltip_bot">
+                        Corresponds to the length by putting all the bank notes side by side.
+                        <img src="data/img/length.gif" alt="bank notes stacking" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="tooltip">
+
+                <div>
+                    <img src="/data/img/time.png" alt="time" class="logo_data">
                 </div>
 
-                <div class="tooltip">
-
-                    <div>
-                        <img src="/data/img/time.png" alt="time" class="logo_data">
-                    </div> 
-                    
-                    <div class="data_value" id="years">
-                        62,702 years 
-                    </div> 
-                    <div class="logo_info"> 
-                        <img src="/data/img/info.png" alt="info" >
-                        <div class="tooltip_content"> 
+                <div class="data_value" id="years">
+                    62,702 years
+                </div>
+                <div class="logo_info">
+                    <img src="/data/img/info.png" alt="info">
+                    <div class="tooltip_content tooltip_bot">
                         Corresponds to the time needed to get this amount of money when earning the selected note every hour, 24h/7.
                         <img src="data/img/time.gif" alt="bank notes stacking" />
                     </div>
-                    </div> 
                 </div>
-
-        </div> 
-    </div>
-
-<!-- 
-    <div id="listItems"></div>
-
-
-
-    <div id="background_container">
-        <div id="left">
-            <div id="top_left" class="deco_amount" data-after="$">100</div>
-        </div>
-
-        <div class="ellipse-2">
-            <div class="ellipse">
-                <form>
-                    <div class="entry">
-                        <label class="description" for="element_1">Amount </label>
-                        <div>
-                            <span class="currency_input">
-                            <i id = "amount_sign" class='fas fa-dollar-sign'></i>
-                            <input id="amount" name="amount" type="text" maxlength="16" value="10,000" title="Enter the amount of cash" required/>
-                        </span>
-                        <div id="top10"></div>
-                        </div>
-                    </div>
-
-                    <div class="entry">
-                        <label class="description" for="currency">
-                        Currency
-                    </label>
-                        <span id="currencyRadio"></span>
-
-                    </div>
-
-                    <div class="entry">
-                        <label class="description" for="value">
-                        Note value
-                    </label>
-
-                        <div id="select_values"></div>
-                    </div>
-
-                    <input id="saveForm" class="button_text" type="button" name="submit" value="Convert" onclick="loadData()" />
-                </form>
             </div>
-        </div>
 
-        <div id="right">
-            <div id="bottom_right" class="deco_amount" data-after="$">100</div>
         </div>
     </div>
-
-    <ul id="data">
-        <li>
-            <div class="tooltip">
-                Weigth
-                <span class="tooltip_content">
-                    Corresponds to the weight the cash.
-                    <img src="data/img/weight.gif" alt="bank notes stacking" />
-                </span><br>
-                <span class="data_value" id="weight"></span>
-            </div>
-        </li>
-        <li>
-            <div class="tooltip">
-                Height
-                <span class="tooltip_content">
-                    Corresponds to the height of the stack by putting all the bank notes on top of each other.
-                    <img src="data/img/height.gif" alt="bank notes stacking" />
-                </span><br>
-                <span class="data_value" id="height"></span>
-            </div>
-        </li>
-        <li>
-            <div class="tooltip">
-                Length
-                <span class="tooltip_content"> 
-                    Corresponds to the length by putting all the bank notes side by side.
-                    <img src="data/img/length.gif" alt="bank notes stacking" />
-                </span><br>
-                <span class="data_value" id="length"></span>
-            </div>
-        </li>
-        <li>
-            <div class="tooltip">
-                Time
-                <span class="tooltip_content"> 
-                    Corresponds to the time needed to get this amount of money when earning the selected note every hour, 24h/7.
-                    <img src="data/img/time.gif" alt="bank notes stacking" />
-                </span><br>
-                <span class="data_value" id="years"> </span>
-            </div>
-        </li>
-    </ul> -->
 
 </body>
 

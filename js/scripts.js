@@ -7,7 +7,6 @@ const formatToNumber = (text) => {
 
 
 const autoFormatToNumber = (event) => {
-
     // const value = text.replace(/\D/g, ''); 
     event.target.value = formatToNumber(event.target.value.replace(/\D/g, ''));
 };
@@ -183,6 +182,12 @@ function round2decimals(n) {
 
 
 function loadData() {
+
+
+
+
+
+
     const amount = document.getElementById("amount").value.replace(/\D/g, '');
 
     const currenciesRadio = document.getElementsByName("currencies");
@@ -203,6 +208,21 @@ function loadData() {
 
     // const valuesSelect = document.getElementById("value");
     if (prevNote !== null) {
+
+
+        if (document.getElementById("dataSide").classList.contains("hidden")) {
+            document.getElementById("dataSide").style.display = "flex";
+
+            if (window.innerWidth > 10000) {
+                document.getElementById("dataSide").style.width = "800px";
+            } else if (window.innerWidth > 1000) {
+                document.getElementById("dataSide").style.width = "600px";
+            } else {
+                document.getElementById("dataSide").style.width = "300px";
+            }
+            document.getElementById("dataSide").style.opacity = "1";
+            document.getElementById("dataSide").classList.remove("hidden");
+        }
         const valuesSelect = prevNote.firstChild.innerHTML;
         const value = valuesSelect.replace(/^\D+/g, '');
         // console.log(value);
@@ -293,7 +313,7 @@ function UpdateCurrency() {
         prevCurrency = this;
 
         UpdateSelect();
-        UpdateSymbolAmount();
+        // UpdateSymbolAmount();
     }
 }
 
@@ -408,8 +428,8 @@ function formatBestUnitTime(time) {
 
 }
 
-function formatName(name){
-    return name.split(' ')[0].substr(0,1) + ". "+name.split(' ')[1];
+function formatName(name) {
+    return name.split(' ')[0].substr(0, 1) + ". " + name.split(' ')[1];
 }
 
 function createNewButton(name, worth, top, ul, data, amountInput) {
@@ -421,20 +441,22 @@ function createNewButton(name, worth, top, ul, data, amountInput) {
     let span = document.createElement('span');
     button.type = "button";
     button.className = "topList";
-    span.innerHTML = `${formatName(name)}`; 
+    span.innerHTML = `${formatName(name)}`;
     button.title = `Select ${name} ($${Math.floor(worth/1000)} B)`;
     button.name = `top_${top}`;
 
     button.onclick = function() {
-
         document.getElementById("amount").value = formatToNumber("" + Math.floor(data[this.name.split("_")[1]].estWorthPrev * 1000000));
         document.getElementById("currency_dollar").checked = true;
         resizeInput.call(amountInput);
 
-        prevCurrency = document.getElementById("currency_dollar");
-        UpdateSelect();
-        UpdateSymbolAmount();
-        prevNote = null;
+        if (prevCurrency != document.getElementById("currency_dollar")) {
+            prevCurrency = document.getElementById("currency_dollar");
+            // UpdateSymbolAmount();
+            prevNote = null;
+            UpdateSelect();
+        }
+        // prevNote = null;
     };
     li.appendChild(button);
     button.appendChild(span);
@@ -457,6 +479,8 @@ window.onload = function() {
         input.type = "radio";
         input.value = value;
         input.title = title;
+        input.checked = true;
+
         // input.addEventListener("change", UpdateCurrency);
         input.onchange = UpdateCurrency;
 
@@ -468,6 +492,9 @@ window.onload = function() {
         radioCurrency.appendChild(input);
         radioCurrency.appendChild(label);
     }
+
+    prevCurrency = document.getElementById("currency_dollar");
+    UpdateSelect();
 
     const amountInput = document.getElementById("amount");
 
